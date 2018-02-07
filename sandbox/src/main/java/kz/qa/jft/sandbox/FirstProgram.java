@@ -1,4 +1,6 @@
-public class FirstProgramm{
+package kz.qa.jft.sandbox;
+
+public class FirstProgram {
 
 	public static void main(String[] args){
 		System.out.println("Hello, world");
