@@ -1,4 +1,4 @@
 apply plugin: 'java'
 apply plugin: 'application'
 //mainClassName = "kz.qa.jft.sandbox.FirstProgram"
-mainClassName = "kz.qa.jft.point.mainRunClass"
+mainClassName = "kz.qa.jft.point.MainRunClass"
