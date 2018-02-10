@@ -10,8 +10,8 @@ public class FirstProgram {
 		hello("World");
         hello("Dasha");
 
-        double l = 8;
-        System.out.println("Площадь квадрата со стороной " + l + " = " + area(l));
+        Square s = new Square(8);
+        System.out.println("Площадь квадрата со стороной " + s.l + " = " + s.area());
 	}
 
 	public static void hello(String somebody){
