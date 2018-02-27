@@ -1,6 +1,5 @@
 package kz.qa.jft.addressbook.tests;
 
-import org.openqa.selenium.By;
 import org.testng.annotations.Test;
 
 public class ContactDeletionTest extends TestBase {
