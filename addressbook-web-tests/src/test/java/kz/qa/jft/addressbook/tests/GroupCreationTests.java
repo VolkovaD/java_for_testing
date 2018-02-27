@@ -1,7 +1,6 @@
 package kz.qa.jft.addressbook.tests;
 
 import kz.qa.jft.addressbook.model.GroupData;
-import kz.qa.jft.addressbook.TestBase;
 import org.testng.annotations.Test;
 
 public class GroupCreationTests extends TestBase {

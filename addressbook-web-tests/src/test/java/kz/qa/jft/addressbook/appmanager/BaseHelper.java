@@ -21,6 +21,11 @@ public class BaseHelper {
         wd.findElement(locator).sendKeys(text);
     }
 
+    public void selectElement(By locator) {
+        if (!wd.findElement(locator).isSelected()) {
+            click(locator);
+        }
+    }
 
     public boolean isAlertPresent() {
         try {

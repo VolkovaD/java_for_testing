@@ -1,4 +1,4 @@
-package kz.qa.jft.addressbook;
+package kz.qa.jft.addressbook.model;
 
 public class ContactData {
     private final String firstname;
