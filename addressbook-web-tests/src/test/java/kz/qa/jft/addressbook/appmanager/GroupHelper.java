@@ -29,10 +29,18 @@ public class GroupHelper extends BaseHelper{
     }
 
     public void deleteSelectedGroup() {
-        click(By.xpath("//div[@id='content']/form/input[5]"));
+        click(By.name("delete"));
     }
 
     public void selectGroup() {
         selectElement(By.name("selected[]"));
+    }
+
+    public void initGroupModification() {
+        click(By.name("edit"));
+    }
+
+    public void submitGroupModification() {
+        click(By.name("update"));
     }
 }
