@@ -2,6 +2,7 @@ package kz.qa.jft.addressbook.tests;
 
 import kz.qa.jft.addressbook.model.ContactData;
 import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.util.Comparator;
@@ -9,23 +10,25 @@ import java.util.List;
 
 public class ContactModificationTest extends TestBase {
 
-    @Test
-    public void testContactModification(){
-        app.getNavigationHelper().gotoHomePage();
-        if(! app.getContactHelper().isThereAContact()){
-            app.getNavigationHelper().gotoContactPage();
-            app.getContactHelper().createContact(new ContactData("Ivanova", "Inna","Inna", "Kazakhstan",
+    @BeforeMethod
+    public void ensurePreconditions(){
+        app.goTo().homePage();
+        if(app.contact().list().size() == 0){
+            app.goTo().contactPage();
+            app.contact().create(new ContactData("Ivanova", "Inna","Inna", "Kazakhstan",
                     "+77770000022", "test@gmail.com", "1995", "test1"), true);
         }
-        List<ContactData> before = app.getContactHelper().getContactList();
+    }
+
+    @Test
+    public void testContactModification(){
+
+        List<ContactData> before = app.contact().list();
         int index = before.size() - 1;
-        app.getContactHelper().initContactModification(index);
         ContactData contact = new ContactData(before.get(index).getId(),"Savina", "Irina","Ira", "",
                 "+77770333322", "test@gmail.com", "1995", null);
-        app.getContactHelper().fillContactForm(contact, false);
-        app.getContactHelper().submitContactModification();
-        app.getContactHelper().returnToHomePage();
-        List<ContactData> after = app.getContactHelper().getContactList();
+        app.contact().modify(index, contact);
+        List<ContactData> after = app.contact().list();
         Assert.assertEquals(after.size(), before.size());
 
         before.remove(index);
