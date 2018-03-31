@@ -15,6 +15,8 @@ import java.util.Set;
 
 public class ContactHelper extends BaseHelper{
 
+    private Contacts contactCashe = null;
+
     public ContactHelper(WebDriver wd) {
        super(wd);
     }
@@ -60,6 +62,7 @@ public class ContactHelper extends BaseHelper{
     public void create(ContactData contact, boolean creation) {
         fillContactForm(contact, creation);
         submitContactCreation();
+        contactCashe = null;
         returnToHomePage();
     }
 
@@ -67,6 +70,7 @@ public class ContactHelper extends BaseHelper{
         initContactModificationById(contact.getId());
         fillContactForm(contact, false);
         submitContactModification();
+        contactCashe = null;
         returnToHomePage();
     }
 
@@ -74,6 +78,7 @@ public class ContactHelper extends BaseHelper{
         selectContactById(contact.getId());
         deleteSelectedContact();
         acceptAlert();
+        contactCashe = null;
     }
 
     public void selectContactById(int id) {
@@ -90,7 +95,10 @@ public class ContactHelper extends BaseHelper{
     }
 
     public Contacts all() {
-        Contacts contacts = new Contacts();
+        if(contactCashe != null){
+            return new Contacts(contactCashe);
+        }
+        contactCashe = new Contacts();
         List<WebElement> elements = wd.findElements(By.cssSelector("tr[name=entry]"));
 
         for (WebElement element : elements){
@@ -100,8 +108,8 @@ public class ContactHelper extends BaseHelper{
             ContactData contact = new ContactData().withId(id)
                     .withLastname(lastname)
                     .withFirstname(firstname);
-            contacts.add(contact);
+            contactCashe.add(contact);
         }
-        return contacts;
+        return new Contacts(contactCashe);
     }
 }
