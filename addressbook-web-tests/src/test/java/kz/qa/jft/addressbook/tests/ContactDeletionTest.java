@@ -19,7 +19,9 @@ public class ContactDeletionTest extends TestBase {
                             .withFirstname("Inna")
                             .withNickname("Inna")
                             .withAddress("Kazakhstan")
+                            .withHomePhone("7775544544")
                             .withMobile("+77770000022")
+                            .withWorkPhone("1111111122")
                             .withEmail("test@gmail.com")
                             .withbYear("1995")
                             .withGroup("test1"),
