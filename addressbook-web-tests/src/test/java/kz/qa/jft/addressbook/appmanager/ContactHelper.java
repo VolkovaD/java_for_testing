@@ -105,10 +105,12 @@ public class ContactHelper extends BaseHelper{
         for (WebElement element : elements){
             String lastname =  element.findElement(By.xpath(".//td[2]")).getText();
             String firstname =  element.findElement(By.xpath(".//td[3]")).getText();
+            String allPhones =  element.findElement(By.xpath(".//td[6]")).getText();
             int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
             ContactData contact = new ContactData().withId(id)
                     .withLastname(lastname)
-                    .withFirstname(firstname);
+                    .withFirstname(firstname)
+                    .withAllPhones(allPhones);
             contactCashe.add(contact);
         }
         return new Contacts(contactCashe);
