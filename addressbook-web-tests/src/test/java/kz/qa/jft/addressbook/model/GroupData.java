@@ -61,6 +61,8 @@ public class GroupData {
         return name != null ? name.equals(groupData.name) : groupData.name == null;
     }
 
+    //хеш код - способ ускорения проверки
+    //позволяет выполнить предварительную проверку
     @Override
     public int hashCode() {
         int result = id;
