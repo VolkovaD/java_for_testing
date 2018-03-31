@@ -8,10 +8,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class ContactHelper extends BaseHelper{
 
@@ -38,7 +35,7 @@ public class ContactHelper extends BaseHelper{
         type(By.name("lastname"), contactData.getLastname());
         type(By.name("nickname"), contactData.getNickname());
         type(By.name("address"), contactData.getAddress());
-        type(By.name("mobile"), contactData.getMobile());
+        type(By.name("mobile"), contactData.getMobilePhone());
         type(By.name("email"), contactData.getEmail());
         selectElement(By.xpath("//div[@id='content']/form/select[1]//option[13]"));
         selectElement(By.xpath("//div[@id='content']/form/select[2]//option[3]"));
@@ -87,7 +84,7 @@ public class ContactHelper extends BaseHelper{
 
     private void initContactModificationById(int id) {
 
-        wd.findElement(By.cssSelector("a[href='edit.php?id=" + id + "']")).click();
+        wd.findElement(By.cssSelector(String.format("a[href='edit.php?id=%s']", id))).click();
     }
 
     public int count() {
@@ -115,5 +112,21 @@ public class ContactHelper extends BaseHelper{
             contactCashe.add(contact);
         }
         return new Contacts(contactCashe);
+    }
+
+    public ContactData infoFromEditForm(ContactData contact) {
+        initContactModificationById(contact.getId());
+        String lastname = wd.findElement(By.name("lastname")).getAttribute("value");
+        String firstname = wd.findElement(By.name("firstname")).getAttribute("value");
+        String mobile = wd.findElement(By.name("mobile")).getAttribute("value");
+        String home = wd.findElement(By.name("home")).getAttribute("value");
+        String work = wd.findElement(By.name("work")).getAttribute("value");
+        wd.navigate().back();
+        return new ContactData().withId(contact.getId())
+                .withLastname(lastname)
+                .withFirstname(firstname)
+                .withHomePhone(home)
+                .withMobile(mobile)
+                .withWorkPhone(work);
     }
 }
