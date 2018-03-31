@@ -8,7 +8,9 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class ContactHelper extends BaseHelper{
 
@@ -46,18 +48,8 @@ public class ContactHelper extends BaseHelper{
         }
     }
 
-    public void selectContact(int i) {
-        wd.findElements(By.name("selected[]")).get(i).click();
-    }
-
-
     public void acceptAlert() {
         wd.switchTo().alert().accept();
-    }
-
-    public void initContactModification(int i) {
-        wd.findElements(By.cssSelector("img[title=Edit]")).get(i).click();
-//  временно      click(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img"));
     }
 
     public void submitContactModification() {
@@ -70,25 +62,34 @@ public class ContactHelper extends BaseHelper{
         returnToHomePage();
     }
 
-    public void modify(int index, ContactData contact) {
-        initContactModification(index);
+    public void modify(ContactData contact) {
+        initContactModificationById(contact.getId());
         fillContactForm(contact, false);
         submitContactModification();
         returnToHomePage();
     }
 
-    public void delete(int index) {
-        selectContact(index);
+    public void delete(ContactData contact) {
+        selectContactById(contact.getId());
         deleteSelectedContact();
         acceptAlert();
+    }
+
+    public void selectContactById(int id) {
+        wd.findElement(By.cssSelector("input[value ='" + id + "']")).click();
+    }
+
+    private void initContactModificationById(int id) {
+
+        wd.findElement(By.cssSelector("a[href='edit.php?id=" + id + "']")).click();
     }
 
     public boolean isThereAContact() {
         return isElementPresent(By.name("selected[]"));
     }
 
-    public List<ContactData> list() {
-        List<ContactData> contacts = new ArrayList<ContactData>();
+    public Set<ContactData> all() {
+        Set<ContactData> contacts = new HashSet<ContactData>();
         List<WebElement> elements = wd.findElements(By.cssSelector("tr[name=entry]"));
 
         for (WebElement element : elements){
@@ -96,8 +97,8 @@ public class ContactHelper extends BaseHelper{
             String firstname =  element.findElement(By.xpath(".//td[3]")).getText();
             int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
             ContactData contact = new ContactData().withId(id)
-                                            .withLastname(lastname)
-                                            .withFirstname(firstname);
+                    .withLastname(lastname)
+                    .withFirstname(firstname);
             contacts.add(contact);
         }
         return contacts;
