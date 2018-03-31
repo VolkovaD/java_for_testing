@@ -1,16 +1,17 @@
 package kz.qa.jft.addressbook.tests;
 
 import kz.qa.jft.addressbook.model.ContactData;
-import org.testng.Assert;
+import kz.qa.jft.addressbook.model.Contacts;
 import org.testng.annotations.Test;
 
-import java.util.Set;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 public class ContactCreationTest extends TestBase {
 
     @Test
     public void testContactCreation() {
-        Set<ContactData> before = app.contact().all();
+        Contacts before = app.contact().all();
         app.goTo().contactPage();
         ContactData contact = new ContactData().withLastname("Ivanova")
                         .withFirstname("Inna")
@@ -21,11 +22,10 @@ public class ContactCreationTest extends TestBase {
                         .withbYear("1995")
                         .withGroup("test1");
         app.contact().create(contact, true);
-        Set<ContactData> after = app.contact().all();
-        Assert.assertEquals(after.size(), before.size() + 1);
-
-        contact.withId(after.stream().mapToInt((c) -> c.getId()).max().getAsInt());
-        before.add(contact);
-        Assert.assertEquals(before, after);
+        Contacts after = app.contact().all();
+        assertThat(after.size(), equalTo(before.size() + 1));
+        assertThat(after, equalTo(
+                before.withAdded(contact.withId(after.stream()
+                        .mapToInt((c) -> c.getId()).max().getAsInt()))));
     }
 }

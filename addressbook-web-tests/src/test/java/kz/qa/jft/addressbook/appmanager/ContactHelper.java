@@ -1,6 +1,7 @@
 package kz.qa.jft.addressbook.appmanager;
 
 import kz.qa.jft.addressbook.model.ContactData;
+import kz.qa.jft.addressbook.model.Contacts;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -88,8 +89,8 @@ public class ContactHelper extends BaseHelper{
         return isElementPresent(By.name("selected[]"));
     }
 
-    public Set<ContactData> all() {
-        Set<ContactData> contacts = new HashSet<ContactData>();
+    public Contacts all() {
+        Contacts contacts = new Contacts();
         List<WebElement> elements = wd.findElements(By.cssSelector("tr[name=entry]"));
 
         for (WebElement element : elements){
