@@ -37,6 +37,7 @@ public class ContactHelper extends BaseHelper{
         type(By.name("address"), contactData.getAddress());
         type(By.name("mobile"), contactData.getMobilePhone());
         type(By.name("email"), contactData.getEmail());
+        attach(By.name("photo"), contactData.getPhoto());
         selectElement(By.xpath("//div[@id='content']/form/select[1]//option[13]"));
         selectElement(By.xpath("//div[@id='content']/form/select[2]//option[3]"));
         type(By.name("byear"), contactData.getbYear());
