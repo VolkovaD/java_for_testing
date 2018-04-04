@@ -31,6 +31,7 @@ public class ContactData {
     private String allEmails;
     @Expose
     private String bYear;
+    @Expose
     private String group;
     private File photo;
 

@@ -3,33 +3,33 @@
     <firstname>firstname 0</firstname>
     <lastname>User 0</lastname>
     <nickname>nickname 0</nickname>
-    <address>Address
- Street 0</address>
+    <address>Address Street 0</address>
     <homePhone>Home tel 0</homePhone>
     <mobilePhone>Mobile tel 0</mobilePhone>
     <email>Email 0</email>
     <bYear>BYear 0</bYear>
+    <group>test1</group>
   </contact>
   <contact>
     <firstname>firstname 1</firstname>
     <lastname>User 1</lastname>
     <nickname>nickname 1</nickname>
-    <address>Address
- Street 1</address>
+    <address>Address Street 1</address>
     <homePhone>Home tel 1</homePhone>
     <mobilePhone>Mobile tel 1</mobilePhone>
     <email>Email 1</email>
     <bYear>BYear 1</bYear>
+    <group>test1</group>
   </contact>
   <contact>
     <firstname>firstname 2</firstname>
     <lastname>User 2</lastname>
     <nickname>nickname 2</nickname>
-    <address>Address
- Street 2</address>
+    <address>Address Street 2</address>
     <homePhone>Home tel 2</homePhone>
     <mobilePhone>Mobile tel 2</mobilePhone>
     <email>Email 2</email>
     <bYear>BYear 2</bYear>
+    <group>test1</group>
   </contact>
 </list>
