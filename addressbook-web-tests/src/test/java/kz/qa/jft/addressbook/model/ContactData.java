@@ -1,22 +1,35 @@
 package kz.qa.jft.addressbook.model;
 
+import com.google.gson.annotations.Expose;
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamOmitField;
+
 import java.io.File;
 
+@XStreamAlias("contact")
 public class ContactData {
-
-    private int id = Integer.MAX_VALUE;;
+    @XStreamOmitField
+    private int id = Integer.MAX_VALUE;
+    @Expose
     private String firstname;
+    @Expose
     private String lastname;
+    @Expose
     private String nickname;
+    @Expose
     private String address;
+    @Expose
     private String homePhone;
+    @Expose
     private String mobilePhone;
     private String workPhone;
     private String allPhones;
+    @Expose
     private String email;
     private String email2;
     private String email3;
     private String allEmails;
+    @Expose
     private String bYear;
     private String group;
     private File photo;
