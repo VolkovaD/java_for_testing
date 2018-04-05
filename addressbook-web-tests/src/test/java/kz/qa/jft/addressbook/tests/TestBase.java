@@ -3,7 +3,6 @@ package kz.qa.jft.addressbook.tests;
 import kz.qa.jft.addressbook.appmanager.ApplicationManager;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
-import sun.plugin2.util.BrowserType;
 
 import static org.openqa.selenium.remote.BrowserType.CHROME;
 import static org.openqa.selenium.remote.BrowserType.FIREFOX;
