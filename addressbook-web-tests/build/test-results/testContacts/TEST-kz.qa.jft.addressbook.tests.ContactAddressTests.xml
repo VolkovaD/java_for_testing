@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="kz.qa.jft.addressbook.tests.ContactAddressTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2018-04-07T07:34:23" hostname="DESKTOP-6JPMPB0" time="0.446">
+  <properties/>
+  <testcase name="testContactAddress" classname="kz.qa.jft.addressbook.tests.ContactAddressTests" time="0.446"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

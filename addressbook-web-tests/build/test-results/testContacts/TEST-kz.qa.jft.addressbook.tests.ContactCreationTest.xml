@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="kz.qa.jft.addressbook.tests.ContactCreationTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2018-04-07T07:33:38" hostname="DESKTOP-6JPMPB0" time="34.318">
+  <properties/>
+  <testcase name="testContactCreation[0](ContactData{id='2147483647', firstname='firstname 0', lastname='User 0'})" classname="kz.qa.jft.addressbook.tests.ContactCreationTest" time="15.621"/>
+  <testcase name="testContactCreation[1](ContactData{id='2147483647', firstname='firstname 1', lastname='User 1'})" classname="kz.qa.jft.addressbook.tests.ContactCreationTest" time="9.227"/>
+  <testcase name="testContactCreation[2](ContactData{id='2147483647', firstname='firstname 2', lastname='User 2'})" classname="kz.qa.jft.addressbook.tests.ContactCreationTest" time="9.454"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
