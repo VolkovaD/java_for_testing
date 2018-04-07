@@ -13,3 +13,7 @@ gradle-app.setting
 # # Work around https://youtrack.jetbrains.com/issue/IDEA-116898
 # gradle/wrapper/gradle-wrapper.properties
 .idea/workspace.xml
+addressbook-web-tests/log-20180407T140711.txt
+addressbook-web-tests/log-20180407T140818.txt
+addressbook-web-tests/log-20180407T140949.txt
+addressbook-web-tests/log-20180407T141647.txt

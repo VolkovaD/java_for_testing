@@ -4,11 +4,11 @@
     <test name="Contacts">
         <classes>
             <class name="kz.qa.jft.addressbook.tests.ContactCreationTest"/>
-            <!--class name="kz.qa.jft.addressbook.tests.ContactModificationTest"/>
+            <class name="kz.qa.jft.addressbook.tests.ContactModificationTest"/>
             <class name="kz.qa.jft.addressbook.tests.ContactPhoneTests"/>
             <class name="kz.qa.jft.addressbook.tests.ContactEmailTests"/>
             <class name="kz.qa.jft.addressbook.tests.ContactAddressTests"/>
-            <class name="kz.qa.jft.addressbook.tests.ContactDeletionTest"/-->
+            <class name="kz.qa.jft.addressbook.tests.ContactDeletionTest"/>
         </classes>
     </test>
 </suite>
