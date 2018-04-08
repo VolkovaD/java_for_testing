@@ -1,5 +1,6 @@
 package kz.qa.jft.addressbook.tests;
 
+import kz.qa.jft.addressbook.model.ContactData;
 import kz.qa.jft.addressbook.model.GroupData;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -32,8 +33,8 @@ public class HBConnectionTest {
         }
     }
 
-    @Test
-    public void testHBConnection(){
+    @Test(enabled = false)
+    public void testHBConnectionGroupData(){
         Session session = sessionFactory.openSession();
         session.beginTransaction();
         List<GroupData> result = session.createQuery("from GroupData").list();
@@ -42,7 +43,17 @@ public class HBConnectionTest {
         }
         session.getTransaction().commit();
         session.close();
+    }
 
-
+    @Test
+    public void testHBConnectionContactData(){
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        List<ContactData> result = session.createQuery("from ContactData where deprecated = '0000-00-00'").list();
+        for ( ContactData contact : result ) {
+            System.out.println(contact);
+        }
+        session.getTransaction().commit();
+        session.close();
     }
 }
