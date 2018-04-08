@@ -5,7 +5,6 @@ import kz.qa.jft.addressbook.model.Contacts;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 
 import java.util.List;
@@ -35,9 +34,10 @@ public class ContactHelper extends BaseHelper{
         type(By.name("lastname"), contactData.getLastname());
         type(By.name("nickname"), contactData.getNickname());
         type(By.name("address"), contactData.getAddress());
+        type(By.name("home"), contactData.getHomePhone());
         type(By.name("mobile"), contactData.getMobilePhone());
         type(By.name("email"), contactData.getEmail());
-        attach(By.name("photo"), contactData.getPhoto());
+       // attach(By.name("photo"), contactData.getPhoto());
         selectElement(By.xpath("//div[@id='content']/form/select[1]//option[13]"));
         selectElement(By.xpath("//div[@id='content']/form/select[2]//option[3]"));
         type(By.name("byear"), contactData.getbYear());
