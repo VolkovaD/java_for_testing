@@ -23,8 +23,7 @@ public class ContactModificationTest extends TestBase {
                                     .withMobile("+77770000022")
                                     .withWorkPhone("1111111122")
                                     .withEmail("test@gmail.com")
-                                    .withbYear("1995")
-                                    .withGroup("test1"),
+                                    .withbYear("1995"),
                                     true);
         }
     }
@@ -41,7 +40,7 @@ public class ContactModificationTest extends TestBase {
                 .withAddress("Street1")
                 .withHomePhone("72755544884")
                 .withMobile("+77770333322")
-                .withWorkPhone("2223335555")
+                //.withWorkPhone("2223335555")
                 .withEmail("test@gmail.com")
                 .withbYear("1995");
 

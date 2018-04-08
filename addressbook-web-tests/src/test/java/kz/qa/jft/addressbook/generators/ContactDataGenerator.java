@@ -78,7 +78,8 @@ public class ContactDataGenerator {
                     .withMobile(String.format("Mobile tel %s", i))
                     .withEmail(String.format("Email %s", i))
                     .withbYear(String.format("1987"))
-                    .withGroup("test1"));
+                    .withGroup("test1")
+            );
         }
         return contacts;
     }

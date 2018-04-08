@@ -23,8 +23,7 @@ public class ContactAddressTests extends TestBase{
                             .withAddress("Kazakhstan")
                             .withMobile("+77770000022")
                             .withEmail("test@gmail.com")
-                            .withbYear("1995")
-                            .withGroup("test1"),
+                            .withbYear("1995"),
                     true);
         }
     }

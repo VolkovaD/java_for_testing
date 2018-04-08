@@ -23,8 +23,7 @@ public class ContactDeletionTest extends TestBase {
                             .withMobile("+77770000022")
                             .withWorkPhone("1111111122")
                             .withEmail("test@gmail.com")
-                            .withbYear("1995")
-                            .withGroup("test1"),
+                            .withbYear("1995"),
                     true);
         }
     }
