@@ -1,6 +1,8 @@
 package kz.qa.jft.addressbook.tests;
 
 import kz.qa.jft.addressbook.appmanager.ApplicationManager;
+import kz.qa.jft.addressbook.model.GroupData;
+import kz.qa.jft.addressbook.model.Groups;
 import org.openqa.selenium.remote.BrowserType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,6 +13,11 @@ import org.testng.annotations.BeforeSuite;
 
 import java.lang.reflect.Method;
 import java.util.Arrays;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
+
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 /**
  * Содержит общие функции и методы для всех тестов
@@ -39,5 +46,16 @@ public class TestBase {
     @AfterMethod(alwaysRun = true)
     public void logTestStop(Method m){
         logger.debug("Stop test " + m.getName());
+    }
+
+    public void verifyGroupListInUI() {
+        if(Boolean.getBoolean("verifyUI")) {
+            Groups dbGroups = app.db().groups();
+            Groups uiGroups = app.group().all();
+            assertThat(uiGroups, equalTo(dbGroups.stream()
+                    .map((g) -> new GroupData().withtId(g.getId())
+                            .withName(g.getName()))
+                    .collect(Collectors.toSet())));
+        }
     }
 }
