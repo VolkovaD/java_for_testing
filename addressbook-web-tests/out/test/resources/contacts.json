@@ -7,7 +7,7 @@
     "homePhone": "Home tel 0",
     "mobilePhone": "Mobile tel 0",
     "email": "Email 0",
-    "bYear": "BYear 0",
+    "bYear": "1987",
     "group": "test1"
   },
   {
@@ -18,18 +18,7 @@
     "homePhone": "Home tel 1",
     "mobilePhone": "Mobile tel 1",
     "email": "Email 1",
-    "bYear": "BYear 1",
-    "group": "test1"
-  },
-  {
-    "firstname": "firstname 2",
-    "lastname": "User 2",
-    "nickname": "nickname 2",
-    "address": "Address Street 2",
-    "homePhone": "Home tel 2",
-    "mobilePhone": "Mobile tel 2",
-    "email": "Email 2",
-    "bYear": "BYear 2",
+    "bYear": "1987",
     "group": "test1"
   }
 ]
