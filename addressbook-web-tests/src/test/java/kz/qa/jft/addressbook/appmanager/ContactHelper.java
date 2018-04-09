@@ -2,6 +2,7 @@ package kz.qa.jft.addressbook.appmanager;
 
 import kz.qa.jft.addressbook.model.ContactData;
 import kz.qa.jft.addressbook.model.Contacts;
+import kz.qa.jft.addressbook.model.GroupData;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -143,4 +144,32 @@ public class ContactHelper extends BaseHelper{
                 .withHomePhone(home).withMobile(mobile).withWorkPhone(work)
                 .withEmail(email).withEmail2(email2).withEmail3(email3);
     }
+
+
+
+    public void addToGroup(ContactData contact, GroupData group) {
+        selectContactById(contact.getId());
+        selectGroupByName(group);
+        submitAddContactToGroup();
+
+    }
+
+    private void selectGroupByName(GroupData group) {
+        new Select(wd.findElement(By.name("to_group"))).selectByVisibleText(group.getName());
+    }
+
+
+    public void submitAddContactToGroup () {
+        click(By.name("add"));
+    }
+
+    /*public void add(ContactData contact) {
+        selectContactById(contact.getId());
+        submitContactAddInGroup();
+        goToHomePage();
+        contactCache = null;
+
+    }
+*/
+
 }
