@@ -254,4 +254,10 @@ public class ContactData {
         result = 31 * result + (bYear != null ? bYear.hashCode() : 0);
         return result;
     }
+
+    public ContactData inGroup(GroupData group) {
+        groups.add(group);
+        return this;
+
+    }
 }

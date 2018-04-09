@@ -5,6 +5,9 @@ import com.google.gson.reflect.TypeToken;
 import com.thoughtworks.xstream.XStream;
 import kz.qa.jft.addressbook.model.ContactData;
 import kz.qa.jft.addressbook.model.Contacts;
+import kz.qa.jft.addressbook.model.GroupData;
+import kz.qa.jft.addressbook.model.Groups;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -55,16 +58,26 @@ public class ContactCreationTest extends TestBase {
         }
     }
 
+    @BeforeMethod
+    public void ensurePreconditions(){
+        if(app.db().groups().size() == 0){
+            app.goTo().groupPage();
+            app.group().create(new GroupData().withName("test3"));
+        }
+    }
+
     @Test(dataProvider = "validContactsFromJson")
     public void testContactCreation(ContactData contact) {
+        Groups groups = app.db().groups();
         Contacts before = app.db().contacts();
         app.goTo().contactPage();
         //File photo = new File("src/test/resources/1317.jpg");
-        app.contact().create(contact, true);
+        app.contact().create(contact.inGroup(groups.iterator().next()), true);
         assertThat(app.contact().count(), equalTo(before.size() + 1));
         Contacts after = app.db().contacts();
         assertThat(after, equalTo(
                 before.withAdded(contact.withId(after.stream()
                         .mapToInt((c) -> c.getId()).max().getAsInt()))));
+        verifyContactListInUI();
     }
 }

@@ -50,5 +50,6 @@ public class ContactModificationTest extends TestBase {
 
         assertThat(after, equalTo(before.without(modifiedContact)
                                         .withAdded(contact)));
+        verifyContactListInUI();
     }
 }

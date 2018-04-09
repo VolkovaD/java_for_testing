@@ -1,6 +1,8 @@
 package kz.qa.jft.addressbook.tests;
 
 import kz.qa.jft.addressbook.appmanager.ApplicationManager;
+import kz.qa.jft.addressbook.model.ContactData;
+import kz.qa.jft.addressbook.model.Contacts;
 import kz.qa.jft.addressbook.model.GroupData;
 import kz.qa.jft.addressbook.model.Groups;
 import org.openqa.selenium.remote.BrowserType;
@@ -55,6 +57,19 @@ public class TestBase {
             assertThat(uiGroups, equalTo(dbGroups.stream()
                     .map((g) -> new GroupData().withtId(g.getId())
                             .withName(g.getName()))
+                    .collect(Collectors.toSet())));
+        }
+    }
+
+    public void verifyContactListInUI() {
+        if(Boolean.getBoolean("verifyUI")) {
+            Contacts dbContacts = app.db().contacts();
+            Contacts uiContacts = app.contact().all();
+            assertThat(uiContacts, equalTo(dbContacts.stream()
+                    .map((g) -> new ContactData().withId(g.getId())
+                            .withLastname(g.getLastname())
+                            .withFirstname(g.getFirstname())
+                            .withAddress(g.getAddress()))
                     .collect(Collectors.toSet())));
         }
     }
