@@ -162,14 +162,4 @@ public class ContactHelper extends BaseHelper{
     public void submitAddContactToGroup () {
         click(By.name("add"));
     }
-
-    /*public void add(ContactData contact) {
-        selectContactById(contact.getId());
-        submitContactAddInGroup();
-        goToHomePage();
-        contactCache = null;
-
-    }
-*/
-
 }
