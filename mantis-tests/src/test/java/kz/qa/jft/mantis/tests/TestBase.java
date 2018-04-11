@@ -1,6 +1,6 @@
 package kz.qa.jft.mantis.tests;
 
-import kz.qa.jft.appmanager.ApplicationManager;
+import kz.qa.jft.mantis.appmanager.ApplicationManager;
 import org.openqa.selenium.remote.BrowserType;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
@@ -10,7 +10,7 @@ import org.testng.annotations.BeforeSuite;
  */
 public class TestBase {
 
-    protected static final ApplicationManager app = new ApplicationManager(System.getProperty("browser", BrowserType.CHROME));
+    protected static final ApplicationManager app = new ApplicationManager(System.getProperty("browser", BrowserType.FIREFOX));
 
     @BeforeSuite
     public void setUp() throws Exception {
