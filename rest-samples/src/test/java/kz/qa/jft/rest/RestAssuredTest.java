@@ -16,7 +16,7 @@ import java.util.Set;
 
 import static org.testng.Assert.assertEquals;
 
-public class RestAssuredTest {
+public class RestAssuredTest extends TestBase{
 
     @BeforeClass
     public void init(){
@@ -24,7 +24,8 @@ public class RestAssuredTest {
     }
 
     @Test
-    public void testCreateIssue() throws IOException {
+    public void testCreateIssue() throws Exception {
+        skipIfNotFixed(1351);
         Set<Issue> oldIssues = getIssues();
         Issue newIssue = new Issue().withSubject("Test issue_jft").withDescription("New test issue_jft");
         int issueId = createIssue(newIssue);
