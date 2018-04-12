@@ -93,6 +93,7 @@ public class JamesHelper {
                         return sb.toString();
                     }
                 }
+                ch = (char) in.read();
             }
         } catch (IOException e) {
             e.printStackTrace();
