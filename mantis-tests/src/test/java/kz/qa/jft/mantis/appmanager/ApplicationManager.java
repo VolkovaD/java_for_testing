@@ -25,6 +25,7 @@ public class ApplicationManager {
     private FtpHelper ftp;
     private MailHelper mailHelper;
     private JamesHelper jamesHelper;
+    private AdministratorHelper administratorhelper;
 
     public ApplicationManager(String browser) {
         this.browser = browser;
@@ -93,5 +94,12 @@ public class ApplicationManager {
             wd.get(properties.getProperty("web.baseUrl"));
         }
         return wd;
+    }
+
+    public AdministratorHelper admin() {
+        if(administratorhelper == null){
+            administratorhelper = new AdministratorHelper(this);
+        }
+        return administratorhelper;
     }
 }

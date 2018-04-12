@@ -61,4 +61,11 @@ public class BaseHelper {
             return false;
         }
     }
+
+    public void finish(String confirmationLink, String password) {
+        wd.get(confirmationLink);
+        type(By.name("password"), password);
+        type(By.name("password_confirm"), password);
+        click(By.cssSelector("button[type='submit']"));
+    }
 }
