@@ -21,16 +21,16 @@ public class SoapHelper {
             this.app = app;
     }
 
+    public MantisConnectPortType getMantisConnect() throws ServiceException, MalformedURLException {
+        return new MantisConnectLocator().getMantisConnectPort(new URL(app.getProperty("soap.url")));
+    }
+
     public Set<Project> getProjects() throws MalformedURLException, ServiceException, RemoteException {
         MantisConnectPortType mc = getMantisConnect();
         ProjectData[] projects = mc.mc_projects_get_user_accessible("administrator", "root");
         return Arrays.asList(projects).stream()
                 .map((p) -> new Project().withId(p.getId().intValue())
                 .withName(p.getName())).collect(Collectors.toSet());
-    }
-
-    public MantisConnectPortType getMantisConnect() throws ServiceException, MalformedURLException {
-        return new MantisConnectLocator().getMantisConnectPort(new URL(app.getProperty("soap.url")));
     }
 
     public Issue addIssue(Issue issue) throws MalformedURLException, ServiceException, RemoteException {
@@ -48,5 +48,19 @@ public class SoapHelper {
                             .withDescription(createdIssueData.getDescription())
                             .withProject(new Project().withId(createdIssueData.getProject().getId().intValue())
                             .withName(createdIssueData.getProject().getName()));
+    }
+
+    public ObjectRef getStatus() throws RemoteException, ServiceException, MalformedURLException {
+        MantisConnectPortType mc = getMantisConnect();
+        BigInteger issueId = getIssueId();
+        IssueData targetIssue = mc.mc_issue_get("administrator", "root",issueId);
+        ObjectRef realStatus = targetIssue.getStatus();
+        return realStatus;
+        }
+
+    public BigInteger getIssueId() throws MalformedURLException, ServiceException, RemoteException {
+        MantisConnectPortType mc = getMantisConnect();
+        BigInteger issueId = mc.mc_issue_get_id_from_summary("administrator", "root", "Test issue");
+        return issueId;
     }
 }
