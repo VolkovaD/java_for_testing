@@ -35,7 +35,7 @@ public class TestBase {
     }
 
     public void skipIfNotFixed(int issueId) throws Exception {
-        if (!isIssueOpen(issueId)) {
+        if (isIssueOpen(issueId)) {
             throw new SkipException("Ignored because of issue " + issueId);
             //System.out.println("Ignored because of issue " + issueId);
         }
