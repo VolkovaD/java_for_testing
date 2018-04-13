@@ -2,6 +2,7 @@ package kz.qa.jft.addressbook.appmanager;
 
 import kz.qa.jft.addressbook.model.ContactData;
 import kz.qa.jft.addressbook.model.Contacts;
+import kz.qa.jft.addressbook.model.GroupData;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -142,5 +143,36 @@ public class ContactHelper extends BaseHelper{
                 .withAddress(address)
                 .withHomePhone(home).withMobile(mobile).withWorkPhone(work)
                 .withEmail(email).withEmail2(email2).withEmail3(email3);
+    }
+
+    public void deleteGroup(ContactData contact, GroupData group) {
+            selectGroupsFromList("group", group.getName());
+            selectContactById(contact.getId());
+            initDeleteGroup();
+            returnToGroupPage(group.getName());
+    }
+
+    public void selectGroupsFromList(String locator, String nameGroup) {
+        new Select(wd.findElement(By.name(locator))).selectByVisibleText(nameGroup);
+    }
+
+    public void initDeleteGroup(){
+        wd.findElement(By.name("remove")).click();
+    }
+
+    private void returnToGroupPage(String groupName) {
+            wd.findElement(By.linkText("group page \""+groupName+"\"")).click();
+    }
+
+    public void addGroup(ContactData contact, GroupData group){
+        selectGroupsFromList("group", "[all]");
+        selectContactById(contact.getId());
+        selectGroupsFromList("to_group", group.getName());
+        submitAddContactToGroup();
+        returnToGroupPage(group.getName());
+    }
+
+    public void submitAddContactToGroup(){
+        wd.findElement(By.name("add")).click();
     }
 }
