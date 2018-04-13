@@ -1,9 +1,5 @@
 package kz.qa.jft.sandbox;
 
-import com.sun.org.apache.xpath.internal.SourceTree;
-
-import java.sql.SQLOutput;
-
 public class FirstProgram {
 
 	public static void main(String[] args){
