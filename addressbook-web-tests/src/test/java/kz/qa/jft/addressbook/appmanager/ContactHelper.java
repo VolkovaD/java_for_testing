@@ -145,21 +145,34 @@ public class ContactHelper extends BaseHelper{
                 .withEmail(email).withEmail2(email2).withEmail3(email3);
     }
 
+    public void deleteGroup(ContactData contact, GroupData group) {
+            selectGroupsFromList("group", group.getName());
+            selectContactById(contact.getId());
+            initDeleteGroup();
+            returnToGroupPage(group.getName());
+    }
 
+    public void selectGroupsFromList(String locator, String nameGroup) {
+        new Select(wd.findElement(By.name(locator))).selectByVisibleText(nameGroup);
+    }
 
-    public void addToGroup(ContactData contact, GroupData group) {
+    public void initDeleteGroup(){
+        wd.findElement(By.name("remove")).click();
+    }
+
+    private void returnToGroupPage(String groupName) {
+            wd.findElement(By.linkText("group page \""+groupName+"\"")).click();
+    }
+
+    public void addGroup(ContactData contact, GroupData group){
+        selectGroupsFromList("group", "[all]");
         selectContactById(contact.getId());
-        selectGroupByName(group);
+        selectGroupsFromList("to_group", group.getName());
         submitAddContactToGroup();
-
+        returnToGroupPage(group.getName());
     }
 
-    private void selectGroupByName(GroupData group) {
-        new Select(wd.findElement(By.name("to_group"))).selectByVisibleText(group.getName());
-    }
-
-
-    public void submitAddContactToGroup () {
-        click(By.name("add"));
+    public void submitAddContactToGroup(){
+        wd.findElement(By.name("add")).click();
     }
 }
