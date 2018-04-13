@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="kz.qa.jft.point.PointTests" tests="3" skipped="0" failures="0" errors="0" timestamp="2018-04-13T05:38:03" hostname="DESKTOP-6JPMPB0" time="0.008">
+  <properties/>
+  <testcase name="testDistanceNotEquals" classname="kz.qa.jft.point.PointTests" time="0.006"/>
+  <testcase name="testDistancePositive1" classname="kz.qa.jft.point.PointTests" time="0.001"/>
+  <testcase name="testDistancePositive2" classname="kz.qa.jft.point.PointTests" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
